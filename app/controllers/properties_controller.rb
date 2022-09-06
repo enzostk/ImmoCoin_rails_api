@@ -5,12 +5,12 @@ class PropertiesController < ApplicationController
   def index
     @properties = Property.all
 
-    render json: @properties
+    render json: @properties.as_json(include: :user)
   end
 
   # GET /properties/1
   def show
-    render json: @property
+    render json: @property.as_json(include: :user)
   end
 
   # POST /properties

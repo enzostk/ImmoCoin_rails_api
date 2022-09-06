@@ -7,4 +7,7 @@ class User < ApplicationRecord
   #  :recoverable, :rememberable, :validatable
 
   validates :email, presence: true
+
+  has_many :property_users
+  has_many :properties, through: :property_users
 end
