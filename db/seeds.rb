@@ -6,13 +6,25 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+User.destroy_all
 Property.destroy_all
+
+User.create!(email: 'test@test.fr',password: '123456',password_confirmation: '123456')
+User.create!(email: 'test2@test.fr',password: '123456', password_confirmation: '123456')
 
 3.times do |i|
   Property.create!(
-   title: "Propriété Numéro #{i}",
-   price: i+100000,
-   description: "Description NuméroDescription NuméroDescription Numéro #{i}",
-   surface: i+100
+    title: "Propriété Numéro #{i}",
+    price: i + 100_000,
+    description: "Description NuméroDescription NuméroDescription Numéro #{i}",
+    surface: i + 100,
+  )
+end
+
+Properties = Property.all
+Properties.each do |property| 
+PropertyUser.create(
+  user: User.all.sample,
+  property: property
 )
 end
