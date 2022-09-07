@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+PropertyUser.destroy_all
 User.destroy_all
 Property.destroy_all
 
-User.create!(email: 'test@test.fr',password: '123456',password_confirmation: '123456')
-User.create!(email: 'test2@test.fr',password: '123456', password_confirmation: '123456')
+User.create!(email: 'test45@test.fr',password: '123456',password_confirmation: '123456')
 
 3.times do |i|
   Property.create!(
@@ -24,7 +24,7 @@ end
 Properties = Property.all
 Properties.each do |property| 
 PropertyUser.create(
-  user: User.all.sample,
+  user: User,
   property: property
 )
 end
