@@ -24,7 +24,7 @@ end
 Properties = Property.all
 Properties.each do |property| 
 PropertyUser.create(
-  user: User,
+  user: User.all.sample,
   property: property
 )
 end
