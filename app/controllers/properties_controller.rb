@@ -16,7 +16,7 @@ class PropertiesController < ApplicationController
   # POST /properties
   def create
     @property = Property.new(property_params)
-    @property.user =current_user
+    @property.user = current_user
    
     if @property.save
       render json: @property, status: :created, location: @property
@@ -36,7 +36,15 @@ class PropertiesController < ApplicationController
 
   # DELETE /properties/1
   def destroy
-    @property.destroy
+    @property_users = PropertyUser.all
+    if current_user == @property.user
+
+    property_user = @property_users.find_by(property_id: @property.id)
+    property_user.destroy
+    @property.destroy 
+    else 
+      render json: @property.errors, status: :unprocessable_entity
+    end
   end
 
   private
