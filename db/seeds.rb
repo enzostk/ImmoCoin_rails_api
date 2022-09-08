@@ -11,6 +11,7 @@ User.destroy_all
 Property.destroy_all
 
 User.create!(email: 'test45@test.fr',password: '123456',password_confirmation: '123456')
+User.create!(email: 'test46@test.fr',password: '123456',password_confirmation: '123456')
 
 3.times do |i|
   Property.create!(
